@@ -577,6 +577,7 @@ data Region
     | GovCloud        -- ^ US GovCloud ('us-gov-west-1').
     | GovCloudFIPS    -- ^ US GovCloud FIPS (S3 Only, 'fips-us-gov-west-1').
     | Beijing         -- ^ China ('cn-north-1').
+    | NewYorkCity3    -- ^ New York City 3 ('nyc3')
       deriving (Eq, Ord, Read, Show, Data, Typeable, Generic)
 
 instance Hashable Region
@@ -599,6 +600,7 @@ instance FromText Region where
         "us-gov-west-1"      -> pure GovCloud
         "fips-us-gov-west-1" -> pure GovCloudFIPS
         "cn-north-1"         -> pure Beijing
+        "nyc3"               -> pure NewYorkCity3
         e                    ->
             fromTextError $ "Failure parsing Region from " <> e
 
@@ -619,6 +621,7 @@ instance ToText Region where
         GovCloud        -> "us-gov-west-1"
         GovCloudFIPS    -> "fips-us-gov-west-1"
         Beijing         -> "cn-north-1"
+        NewYorkCity3    -> "nyc3"
 
 instance ToByteString Region
 
